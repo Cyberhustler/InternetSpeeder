@@ -3,11 +3,11 @@ import speedtest
 
 cybertest = speedtest.Speedtest()
 
-def download_speed():
+def  getspeed():
     downloadrate = round(cybertest.download() / 1_000_000,2)
     return str(downloadrate) + " Mbps"
     
-def upload_speed():
+def  givespeed():
     uploadrate = round(cybertest.upload() / 1_000_000,2)
     return str(uploadrate) + " Mbps"
 
@@ -19,6 +19,11 @@ if _name_ == "__main__":
     arguments = bp.parse_args()
     
     if arguments.download:
-        print()
-    
-    
+        print(f"\nDownload Rate : {getspeed()}\n")
+    elif arguments.upload:
+        print(f"\nUpload Rate : {givespeed()}\n")
+    else:
+        print("""\n Choose which one to check :
+  -d:  Download Rate
+  -u:  Upload Rate 
+  """)
